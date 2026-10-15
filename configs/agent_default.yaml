@@ -1,0 +1,8 @@
+extends: paths.yaml
+
+agent:
+  backend: layered
+  max_tool_calls: 32
+  temperature: 0.2
+  model_path: ${paths.models.qwen3_14b}
+  tool_config_module: www_cxr_agent.tools.tool_configs

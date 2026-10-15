@@ -1,0 +1,22 @@
+checklist:
+  - id: trachea_mediastinum
+    name: "气道与纵隔轮廓"
+    check: "气管居中与管壁形态；纵隔轮廓、移位、增宽"
+  - id: lung_fields
+    name: "肺野"
+    check: "双肺透亮度；实变/浸润/GGO；结节/肿块；气胸；间质纹理"
+  - id: pleura
+    name: "胸膜"
+    check: "胸腔积液、肋膈角钝化；胸膜增厚/钙化"
+  - id: heart
+    name: "心脏"
+    check: "心脏轮廓；心胸比；肥大相关征象"
+  - id: diaphragm
+    name: "横膈"
+    check: "位置、形态、两侧高度对比；膈下游离气体；膈面与肋膈角"
+  - id: bones
+    name: "骨骼系统"
+    check: "肋骨、锁骨、胸椎；骨折、骨质破坏、增生"
+  - id: devices
+    name: "植入设备与体外装置"
+    check: "导管、CVC、起搏器/ICD电极、手术夹；位置与并发症"

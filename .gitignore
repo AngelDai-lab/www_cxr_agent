@@ -1,0 +1,17 @@
+runs/
+cache/
+logs/
+*.log
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.ckpt
+*.gguf
+.DS_Store
+.idea/
+.vscode/

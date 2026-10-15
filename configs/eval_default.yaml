@@ -1,0 +1,12 @@
+extends: paths.yaml
+
+eval:
+  split: test
+  batch_size: 1
+  metrics:
+    clinical: true
+    nlg: true
+    alignment: true
+    efficiency: true
+    checklist: true
+  output_dir: runs/eval

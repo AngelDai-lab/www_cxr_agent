@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "www-cxr-agent"
+version = "0.1.0"
+description = "WWW CXR Agent training and evaluation"
+requires-python = ">=3.11"
+dependencies = [
+  "transformers==4.51.3",
+  "accelerate>=0.33.0",
+  "peft>=0.12.0",
+  "trl>=0.9.0",
+  "datasets>=2.20.0",
+  "numpy",
+  "pandas",
+  "pillow",
+  "tqdm",
+  "scikit-learn",
+  "opencv-python",
+  "pydicom",
+  "pyarrow",
+  "scikit-image",
+  "torchxrayvision",
+  "nltk",
+  "pyyaml",
+  "omegaconf",
+  "einops",
+  "timm",
+  "sentencepiece",
+  "protobuf",
+  "safetensors",
+  "huggingface_hub",
+  "fastmcp==4.0.5",
+  "mcp==2.2.0",
+  "radgraph==0.1.18",
+  "rouge-score==0.1.2",
+  "aiohttp",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["www_cxr_agent*"]

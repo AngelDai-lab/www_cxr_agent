@@ -1,0 +1,49 @@
+# WWW CXR Agent 环境依赖（训练 + Agent，Python 3.12）
+# 用法见 WWW实验执行安排.md §1.5
+# 先按 CUDA 版本单独安装 PyTorch，再：
+#   pip install -r requirements_www_cxr_agent.txt
+
+# ---- 训练 / Agent ----
+transformers==4.51.3
+accelerate>=0.33.0
+peft>=0.12.0
+trl>=0.9.0
+datasets>=2.20.0
+sentencepiece
+protobuf
+einops
+safetensors
+huggingface_hub
+
+# ---- 数据与图像 ----
+numpy
+pandas
+pillow
+tqdm
+scikit-learn
+opencv-python
+pydicom
+pyarrow
+scikit-image
+torchxrayvision
+
+# ---- NLG：METEOR ----
+nltk
+
+# ---- MCP 工具服务（RadAgent / WWW实验 Agent 工具箱）----
+fastmcp==4.0.5
+mcp==2.2.0
+aiohttp
+
+# ---- 配置 / 杂项 ----
+pyyaml
+omegaconf
+timm
+
+# Formal clinical/NLG evaluation
+radgraph==0.1.18
+rouge-score==0.1.2
+appdirs==1.4.4
+dotmap==1.3.30
+h5py==3.16.0
+jsonpickle==4.1.2

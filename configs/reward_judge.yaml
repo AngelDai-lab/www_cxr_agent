@@ -1,0 +1,7 @@
+extends: paths.yaml
+
+reward:
+  lambda_mis: 1.0
+  lambda_align: 1.0
+  judge_model: ${paths.models.qwen3_14b}
+  negation_tool: cxr_negation_checker

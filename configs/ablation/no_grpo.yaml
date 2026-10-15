@@ -1,0 +1,6 @@
+extends: ../train_default.yaml
+opt:
+  max_steps: 0
+paths:
+  runs_dir: runs/no_grpo
+  checkpoint_dir: runs/no_grpo/checkpoints

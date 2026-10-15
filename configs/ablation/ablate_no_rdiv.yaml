@@ -1,0 +1,17 @@
+extends: ../train_default.yaml
+reward:
+  lamb_mis: 0.2
+  w:
+    explore:
+    - 0.1
+    - 0.0
+    - 0.5
+    - 0.0
+    converge:
+    - 0.1
+    - 0.0
+    - 0.2
+    - 0.2
+paths:
+  runs_dir: runs/ablate_no_rdiv
+  checkpoint_dir: runs/ablate_no_rdiv/checkpoints

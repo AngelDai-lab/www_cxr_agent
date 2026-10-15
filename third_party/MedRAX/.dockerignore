@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Git
+.git/
+.gitignore
+
+# Logs
+*.log
+logs/*.json
+nohup.out
+server.log
+
+# Temporary files
+temp/*
+!temp/.gitkeep
+
+# Model weights (download at runtime)
+model-weights/*
+!model-weights/.gitkeep
+
+# Documentation
+*.md
+!README.md
+
+# Test files
+tests/
+test_*.py
+
+# Jupyter
+*.ipynb
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+docker-compose.override.yml

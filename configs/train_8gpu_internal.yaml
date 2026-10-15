@@ -1,0 +1,26 @@
+# 8xA100 internal-server configuration
+extends: train_default.yaml
+policy:
+  model: ${CXR_POLICY_MODEL}
+training:
+  rollout_devices: [1, 2, 3, 4]
+  rollout_workers_per_device: 1
+  rollout_concurrency: 4
+  judge_concurrency: 1
+  judge_count: 1
+  rollout: 8
+  batch_size: 6
+  curriculum_step: 30
+  max_agent_steps: 32
+  max_tool_calls: 32
+opt:
+  max_steps: 150
+  early_stop: true
+validation:
+  enabled: true
+  n: 50
+  interval: 10
+  patience: 3
+paths:
+  runs_dir: runs/formal_8gpu_internal
+  checkpoint_dir: runs/formal_8gpu_internal/checkpoints

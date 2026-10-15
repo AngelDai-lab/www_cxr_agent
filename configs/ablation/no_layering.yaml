@@ -1,0 +1,5 @@
+extends: ../train_default.yaml
+agent_backend: react_single
+paths:
+  runs_dir: runs/no_layering
+  checkpoint_dir: runs/no_layering/checkpoints

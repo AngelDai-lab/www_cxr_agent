@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  medrax:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: medrax:latest
+    container_name: medrax-agent
+    restart: always
+    
+    # GPU support (requires nvidia-docker)
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    
+    # Environment variables
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OPENAI_BASE_URL=${OPENAI_BASE_URL:-}
+      - CUDA_VISIBLE_DEVICES=0
+    
+    # Ports
+    ports:
+      - "8585:8585"
+    
+    # Volumes for persistent data
+    volumes:
+      # Model weights cache
+      - model-weights:/model-weights
+      # Temporary files
+      - ./temp:/app/temp
+      # Logs
+      - ./logs:/app/logs
+      # Demo data (optional, for testing)
+      - ./demo:/app/demo:ro
+      # Environment file
+      - ./.env:/app/.env:ro
+    
+    # Shared memory size (important for PyTorch)
+    shm_size: '8gb'
+    
+    # Network mode
+    networks:
+      - medrax-network
+    
+    # Health check
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8585/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 2m
+
+# Named volumes
+volumes:
+  model-weights:
+    driver: local
+
+# Networks
+networks:
+  medrax-network:
+    driver: bridge

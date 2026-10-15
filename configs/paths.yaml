@@ -1,0 +1,21 @@
+extends: null
+paths:
+  project_root: ${oc.env:WWW_CXR_AGENT_ROOT,/root/autodl-tmp/www-cxr-agent}
+  models:
+    qwen3_14b: /root/autodl-tmp/models/Qwen3-14B-Instruct
+    chexagent: /root/autodl-tmp/models/CheXagent-2-3b
+    report_findings: /root/autodl-tmp/models/chexpert-mimic-cxr-findings-baseline
+    report_impression: /root/autodl-tmp/models/chexpert-mimic-cxr-impression-baseline
+  cache:
+    torchxrayvision: cache/torchxrayvision
+  data:
+    # §1.1 实验数据包（已迁到 AutoDL）
+    mimic_cxr: /root/autodl-tmp/datasets/mimic_cxr/mimic_cxr
+    mimic_annotation: /root/autodl-tmp/datasets/mimic_cxr/mimic_cxr/annotation.json
+    mimic_labels_14: /root/autodl-tmp/datasets/mimic_cxr/mimic_cxr/labels_14_official_study.pickle
+    mimic_images: /root/autodl-tmp/datasets/mimic_cxr/mimic_cxr/images
+    iu_xray: /root/autodl-tmp/datasets/iu_xray
+    iu_reports: /root/autodl-tmp/datasets/iu_xray/reports_ori.json
+  runs: runs
+  medrax: third_party/MedRAX
+  tool_registry: runs/tool_server_registry.json

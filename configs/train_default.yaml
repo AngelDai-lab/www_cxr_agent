@@ -1,0 +1,53 @@
+# GRPO+LoRA 训练默认配置（§1.6 参数配置）
+# 训练入口 scripts/train_grpo.py 统一从本文件读取；试跑规模见 §1.6 末尾。
+policy:
+  model: /root/autodl-tmp/models/Qwen3-14B-Instruct
+  lora_rank: 16
+  lora_alpha: 32
+  load_in_4bit: false                 # BF16 LoRA on dedicated GPU0
+  torch_dtype: bfloat16
+opt:
+  lr: 1.0e-5
+  max_steps: 150
+  early_stop: true
+  warmup_steps: 10
+training:
+  curriculum_step: 30
+  max_agent_steps: 32
+  max_tool_calls: 32
+  rollout_concurrency: 2
+  judge_concurrency: 2
+  # Infrastructure-only knobs; paper reward and agent protocol unchanged.
+  policy_max_new_tokens: 512
+  judge_count: 3
+  clip_epsilon: 0.2
+  kl_beta: 0.04
+  rollout: 8                        # 每个 prompt 采样数
+  batch_size: 6
+  grad_clip: 1.0
+reward:                             # §1.6 奖励权重
+  lamb_mis: 0.2                     # 探索期 P_misalign 惩罚系数；收敛期 0.3（phase 切换）
+  w:  # (w_s, w_d, w_c, w_j)
+    explore: [0.1, 0.5, 0.5, 0.0]   # R_tool 子奖励权重（探索期）
+    converge: [0.1, 0.2, 0.2, 0.2]  # 收敛期
+  judge_model: /root/autodl-tmp/models/Qwen3-14B-Instruct
+  judge_prompt: configs/reward_judge.yaml
+data:
+  dataset: mimic_cxr            # 对齐服务器 factory.DatasetName —— 别用 mimic
+  split: train
+  n_samples_trial: 10               # 试跑规模（§1.6）：约 10~50
+  rollout_trial: 2
+  batch_trial: 1
+  seed: 42
+paths:
+  config_dir: configs
+  runs_dir: runs
+  checkpoint_dir: runs/checkpoints
+log:
+  log_interval: 5
+  save_interval: 1
+validation:
+  enabled: true
+  n: 50
+  interval: 10
+  patience: 3
